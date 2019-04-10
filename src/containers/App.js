@@ -5,6 +5,7 @@ import CardList from "../components/CardList";
 
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
+import ErrorBoundry from "../components/ErrorBoundry";
 
 const initialState = {
     starmen:[],
@@ -89,9 +90,12 @@ class App extends Component {
                         searchChange={this.onSearchChange.bind(this)}
                     />
                     <Scroll>
-                        <CardList
-                            starmen={filteredStarmenOnSearch}
-                        />
+                        <ErrorBoundry>
+                            <CardList
+                                starmen={filteredStarmenOnSearch}
+                            />
+                        </ErrorBoundry>
+
                     </Scroll>
 
                 </div>
